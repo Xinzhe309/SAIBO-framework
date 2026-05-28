@@ -1,0 +1,78 @@
+{
+  "task_name": "public_wet_example",
+  "background": "Optimize a bounded two-variable scientific response from observed wet-lab history.",
+  "objective": "Maximize the response y.",
+  "goal": "max",
+  "y_key": "y",
+  "batch_q": 1,
+  "core_experience": [
+    "Past runs suggest the response improves when x1 is moderately high and x2 is not too high.",
+    "Very low x1 tends to underperform even when x2 is favorable.",
+    "The most promising region is expected near the best observed point, but small moves may still help."
+  ],
+  "expert_rules": [
+    "Prefer candidates that stay close enough to observed high-response settings unless uncertainty is high.",
+    "Do not extrapolate aggressively outside the current experimental envelope in wet mode."
+  ],
+  "measurement_notes": [
+    "Observed y values are high-fidelity measurements.",
+    "Small differences below 0.02 may be within experimental noise."
+  ],
+  "parameters": [
+    {
+      "name": "x1",
+      "type": "continuous",
+      "bounds": [
+        0.0,
+        1.0
+      ],
+      "description": "First controllable factor."
+    },
+    {
+      "name": "x2",
+      "type": "continuous",
+      "bounds": [
+        0.0,
+        1.0
+      ],
+      "description": "Second controllable factor."
+    }
+  ],
+  "constraints": [
+    "Keep both variables inside the declared bounds."
+  ],
+  "prompt_guidance": [
+    "Use the core experience as soft prior knowledge, not as a hard constraint.",
+    "When evidence and experience disagree, prefer candidates that can reduce uncertainty."
+  ],
+  "labo_prompt_addendum": [
+    "For LABO, estimate the low-fidelity target on the same scale as y."
+  ],
+  "lgbo_prompt_addendum": [
+    "For LGBO, a compact region around the promising band is acceptable if one exact point is too brittle."
+  ],
+  "observations": [
+    {
+      "x": {
+        "x1": 0.10,
+        "x2": 0.10
+      },
+      "y": 0.58
+    },
+    {
+      "x": {
+        "x1": 0.50,
+        "x2": 0.50
+      },
+      "y": 0.92
+    },
+    {
+      "x": {
+        "x1": 0.90,
+        "x2": 0.30
+      },
+      "y": 0.96
+    }
+  ],
+  "offline_preference": "[point, [0.75, 0.35], 0.7]"
+}

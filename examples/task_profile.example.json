@@ -1,0 +1,71 @@
+{
+  "task_name": "public_prompt_profile",
+  "background": "Optimize a bounded two-variable scientific response using prior scientific experience.",
+  "objective": "Maximize the target response while avoiding unstable operating regions.",
+  "goal": "max",
+  "parameters": [
+    {
+      "name": "x1",
+      "type": "continuous",
+      "bounds": [
+        0.0,
+        1.0
+      ],
+      "description": "First controllable factor."
+    },
+    {
+      "name": "x2",
+      "type": "continuous",
+      "bounds": [
+        0.0,
+        1.0
+      ],
+      "description": "Second controllable factor."
+    }
+  ],
+  "n_initial_points": 3,
+  "initial_points": [
+    {
+      "x1": 0.10,
+      "x2": 0.10
+    },
+    {
+      "x1": 0.50,
+      "x2": 0.50
+    },
+    {
+      "x1": 0.90,
+      "x2": 0.30
+    }
+  ],
+  "core_experience": [
+    "The response is usually stronger when x1 is moderately high.",
+    "Very high x2 can reduce robustness even when the immediate response looks good.",
+    "Good candidates should balance expected improvement with conservative movement from known good settings."
+  ],
+  "expert_rules": [
+    "Treat the experience as soft prior knowledge.",
+    "Do not ignore measured history when it contradicts the prior."
+  ],
+  "failure_modes": [
+    "Candidates near the edge of the box may be unstable.",
+    "A single high observation should not define the whole search region."
+  ],
+  "constraints": [
+    "Keep all variables inside the declared bounds."
+  ],
+  "measurement_notes": [
+    "The objective is noisy at the second decimal place."
+  ],
+  "prompt_guidance": [
+    "Prefer concise numeric outputs that the optimizer can parse.",
+    "Use domain experience to rank plausible regions, but leave final selection to BO."
+  ],
+  "labo_prompt_addendum": [
+    "For LABO, predict one numeric low-fidelity target for every candidate point."
+  ],
+  "lgbo_prompt_addendum": [
+    "For LGBO, return either one point or one compact region with confidence."
+  ],
+  "offline_preference": "[point, [0.75, 0.35], 0.7]"
+}
