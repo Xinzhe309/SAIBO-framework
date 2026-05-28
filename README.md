@@ -227,7 +227,7 @@ The following components are part of the broader SAIBO direction but are not inc
 
 | Module | Status | Direction |
 |---|---|---|
-| TagBO | Planned | Tag-aware and semantic-feature Bayesian optimization for chemistry and reaction discovery. |
+| Graph-based Bayesian Optimization | Planned | Semantic-feature Bayesian optimization for chemistry and reaction discovery. |
 | Latent-space BO | Planned | Mixed continuous, discrete, and categorical search through task-aware latent representations. |
 | Multi-objective BO | Planned | Modular acquisition strategies such as qEHVI, scalarization BO, and surrogate-assisted evolutionary search. |
 | Multi-scale agents | Planned | Micro, meso, and macro scientific agents coordinated through shared uncertainty and evidence states. |
