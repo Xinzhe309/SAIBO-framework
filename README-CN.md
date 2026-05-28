@@ -232,7 +232,7 @@ saibo wet --method labo --online --data-json examples/wet_input.example.json
 
 | 模块 | 状态 | 方向 |
 |---|---|---|
-| TagBO | 计划中 | 面向化学反应和材料发现的 tag-aware / semantic-feature BO。 |
+| Graph-based BO | 计划中 | 面向化学反应和材料发现的 Semantic-feature BO。 |
 | Latent-space BO | 计划中 | 在任务相关隐空间中统一连续、离散和分类变量。 |
 | Multi-objective BO | 计划中 | 接入 qEHVI、scalarization BO 和代理模型辅助搜索。 |
 | Multi-scale agents | 计划中 | 组织 micro、meso、macro Agent 的跨尺度证据协同。 |
